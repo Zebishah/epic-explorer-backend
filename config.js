@@ -1,5 +1,4 @@
 const config = {
-    tokenExpiry: 3600,
-
-}
+  tokenExpiry: 3600,
+};
 export default config;
