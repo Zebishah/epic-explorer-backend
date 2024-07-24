@@ -26,7 +26,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://epic-explorer-frontend-9rtk.vercel.app/", // Allow requests from this origin
+    origin: "https://epic-explorer-frontend-9rtk.vercel.app", // Allow requests from this origin
     credentials: true, // Allow cookies to be sent with the request
   },
 });
