@@ -1,5 +1,4 @@
-import express, { json, response } from "express";
-
+import express from "express";
 import { Server } from "socket.io";
 import { createServer } from "http";
 import AdminRoutes from "./Routes/Admin-Routes.js";
@@ -14,64 +13,32 @@ import cors from "cors";
 import UserRoutes from "./Routes/User-Routes.js";
 import HotelRoutes from "./Routes/Hotel-Routes.js";
 import RoomRoutes from "./Routes/Room-Routes.js";
-import TransportRoutes from "./Routes/Transport-Routes .js";
+import TransportRoutes from "./Routes/Transport-Routes.js";
 import TourServiceRoutes from "./Routes/TourServices-Routes.js";
 import HotelServicesRoutes from "./Routes/HotelServices-Routes.js";
-import TransportServicesRoutes from "./Routes/TransportServices-Routes .js";
+import TransportServicesRoutes from "./Routes/TransportServices-Routes.js";
 import UserFavoriteRoutes from "./Routes/UserFavrt-Routes.js";
 import NotificationRoutes from "./Routes/Notification-Routes.js";
 import BillRoutes from "./Routes/Bill-Routes.js";
 import ReviewsRoutes from "./Routes/Review-Routes.js";
 import BlogRoutes from "./Routes/Blog-Routes.js";
 import connectDB from "./Db.js";
+
 const DB = process.env.MONGOURI;
 const app = express();
-const server = createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*", // Allow requests from this origin
-    credentials: true, // Allow cookies to be sent with the request
-  },
-});
-io.on("connection", (socket) => {
-  console.log("New client connected");
 
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-  });
-  // io.emit('notification', "baba")
-});
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
-app.use(
-  cors({
-    origin: "*", // Allow requests from this origin
-    credentials: true, // Allow cookies to be sent with the request
-  })
-);
-app.use(json());
-const port = process.env.PORT || 5000;
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB connection successful");
-  })
-  .catch((err) => {
-    console.error("DB connection error:", err);
-  });
-let host = process.env.REACT_APP_API_HOST;
+app.use(cors({ origin: "*", credentials: true }));
+
 app.get("/", (req, res) => {
   try {
-    console.log("Request received");
     res.json({ message: "hey bro" });
   } catch (error) {
-    console.error("Error occurred:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 app.use("/Admin", AdminRoutes);
 app.use("/Review", ReviewsRoutes);
 app.use("/Notification", NotificationRoutes);
@@ -87,8 +54,6 @@ app.use("/Category", CategoryRoutes);
 app.use("/ToServicesIt", TourServiceRoutes);
 app.use("/HoServicesIt", HotelServicesRoutes);
 app.use("/TrServicesIt", TransportServicesRoutes);
-server.listen(port, () => {
-  console.log("Server is Listening at Port " + port);
-});
 
-export default io;
+// Export the Express app
+export default app;
