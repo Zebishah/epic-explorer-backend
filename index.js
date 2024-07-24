@@ -24,12 +24,14 @@ import BlogRoutes from "./Routes/Blog-Routes.js";
 const DB = process.env.MONGOURI;
 const app = express();
 const server = createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "https://epic-explorer-frontend-9rtk.vercel.app/", // Allow requests from this origin
-    credentials: true, // Allow cookies to be sent with the request
-  },
-});
+
+app.use(
+  cors({
+    origin: "https://epic-explorer-frontend-9rtk.vercel.app", // Replace with your actual frontend domain
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 io.on("connection", (socket) => {
   console.log("New client connected");
 
@@ -40,12 +42,7 @@ io.on("connection", (socket) => {
 });
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
-app.use(
-  cors({
-    origin: "https://epic-explorer-frontend-9rtk.vercel.app/", // Allow requests from this origin
-    credentials: true, // Allow cookies to be sent with the request
-  })
-);
+
 app.use(json());
 const port = process.env.PORT || 5000;
 mongoose
