@@ -26,13 +26,13 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://epic-explorer-frontend-9rtk.vercel.app", // Allow requests from this origin
+    origin: "http://localhost:5173", // Allow requests from this origin
     credentials: true, // Allow cookies to be sent with the request
   },
 });
 app.use(
   cors({
-    origin: "https://epic-explorer-frontend-9rtk.vercel.app", // Replace with your actual frontend domain
+    origin: "http://localhost:5173", // Replace with your actual frontend domain
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -62,7 +62,9 @@ mongoose
     console.error("DB connection error:", err);
   });
 let host = process.env.REACT_APP_API_HOST;
-
+app.get("/", (req, res) => {
+  res.json({ message: "hey bro" });
+});
 app.use("/Admin", AdminRoutes);
 app.use("/Review", ReviewsRoutes);
 app.use("/Notification", NotificationRoutes);
