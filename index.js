@@ -26,7 +26,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Allow requests from this origin
+    origin: "https://epic-explorer-frontend-9rtk.vercel.app/", // Allow requests from this origin
     credentials: true, // Allow cookies to be sent with the request
   },
 });
@@ -42,7 +42,7 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow requests from this origin
+    origin: "https://epic-explorer-frontend-9rtk.vercel.app/", // Allow requests from this origin
     credentials: true, // Allow cookies to be sent with the request
   })
 );
