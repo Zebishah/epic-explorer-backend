@@ -79,8 +79,5 @@ app.use("/Category", CategoryRoutes);
 app.use("/ToServicesIt", TourServiceRoutes);
 app.use("/HoServicesIt", HotelServicesRoutes);
 app.use("/TrServicesIt", TransportServicesRoutes);
-server.listen(port, () => {
-  console.log("Server is Listening at Port " + port);
-});
 
 export default app;
