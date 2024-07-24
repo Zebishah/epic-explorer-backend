@@ -1,5 +1,5 @@
 import express, { json, response } from "express";
-import connectDB from "../Backend/Db.js";
+
 import { Server } from "socket.io";
 import { createServer } from "http";
 import AdminRoutes from "./Routes/Admin-Routes.js";
@@ -23,6 +23,7 @@ import NotificationRoutes from "./Routes/Notification-Routes.js";
 import BillRoutes from "./Routes/Bill-Routes.js";
 import ReviewsRoutes from "./Routes/Review-Routes.js";
 import BlogRoutes from "./Routes/Blog-Routes.js";
+import connectDB from "./Db.js";
 const DB = process.env.MONGOURI;
 const app = express();
 const server = createServer(app);
@@ -63,7 +64,13 @@ mongoose
   });
 let host = process.env.REACT_APP_API_HOST;
 app.get("/", (req, res) => {
-  res.json({ message: "hey bro" });
+  try {
+    console.log("Request received");
+    res.json({ message: "hey bro" });
+  } catch (error) {
+    console.error("Error occurred:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 app.use("/Admin", AdminRoutes);
 app.use("/Review", ReviewsRoutes);
