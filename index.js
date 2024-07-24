@@ -29,7 +29,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Allow requests from this origin
+    origin: "*", // Allow requests from this origin
     credentials: true, // Allow cookies to be sent with the request
   },
 });
