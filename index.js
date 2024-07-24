@@ -60,7 +60,13 @@ mongoose
     console.error("DB connection error:", err);
   });
 let host = process.env.REACT_APP_API_HOST;
-
+app.get("/", (req, res) => {
+  try {
+    res.json({ message: "hey bro" });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 app.use("/Admin", AdminRoutes);
 app.use("/Review", ReviewsRoutes);
 app.use("/Notification", NotificationRoutes);
