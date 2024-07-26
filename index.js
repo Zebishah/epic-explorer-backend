@@ -81,8 +81,8 @@ app.get("/", (req, res) => {
   res.json({ message: "hey brother" });
 });
 
-// server.listen(port, () => {
-//   console.log(`Server is Listening at Port ${port}`);
-// });
+server.listen(port, () => {
+  console.log(`Server is Listening at Port ${port}`);
+});
 
 export default app;
