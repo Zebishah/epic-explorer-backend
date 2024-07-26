@@ -48,9 +48,7 @@ app.use(
     credentials: true, // Allow cookies to be sent with the request
   })
 );
-app.get((req, res) => {
-  res.json({ message: "hey brother" });
-});
+
 app.use(json());
 const port = process.env.PORT || 5000;
 mongoose
@@ -84,5 +82,7 @@ app.use("/TrServicesIt", TransportServicesRoutes);
 server.listen(port, () => {
   console.log("Server is Listening at Port " + port);
 });
-
+app.get("/", (req, res) => {
+  res.json({ message: "hey brother" });
+});
 export default app;
