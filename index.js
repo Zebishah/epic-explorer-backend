@@ -5,7 +5,6 @@ import AdminRoutes from "./Routes/Admin-Routes.js";
 import bodyParser from "body-parser";
 import CategoryRoutes from "./Routes/Category-Routes.js";
 import TourRoutes from "./Routes/Tour-Routes.js";
-import ServiceItrenaryRoutes from "./Routes/TourServices-Routes.js";
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
@@ -13,10 +12,10 @@ import cors from "cors";
 import UserRoutes from "./Routes/User-Routes.js";
 import HotelRoutes from "./Routes/Hotel-Routes.js";
 import RoomRoutes from "./Routes/Room-Routes.js";
-import TransportRoutes from "./Routes/Transport-Routes.js";
+import TransportRoutes from "./Routes/Transport-Routes .js";
 import TourServiceRoutes from "./Routes/TourServices-Routes.js";
 import HotelServicesRoutes from "./Routes/HotelServices-Routes.js";
-import TransportServicesRoutes from "./Routes/TransportServices-Routes.js";
+import TransportServicesRoutes from "./Routes/TransportServices-Routes .js";
 import UserFavoriteRoutes from "./Routes/UserFavrt-Routes.js";
 import NotificationRoutes from "./Routes/Notification-Routes.js";
 import BillRoutes from "./Routes/Bill-Routes.js";
@@ -78,8 +77,6 @@ app.use("/Category", CategoryRoutes);
 app.use("/ToServicesIt", TourServiceRoutes);
 app.use("/HoServicesIt", HotelServicesRoutes);
 app.use("/TrServicesIt", TransportServicesRoutes);
-
-c;
 
 server.listen(port, () => {
   console.log(`Server is Listening at Port ${port}`);
