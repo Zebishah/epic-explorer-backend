@@ -77,6 +77,9 @@ app.use("/Category", CategoryRoutes);
 app.use("/ToServicesIt", TourServiceRoutes);
 app.use("/HoServicesIt", HotelServicesRoutes);
 app.use("/TrServicesIt", TransportServicesRoutes);
+app.get("/", (req, res) => {
+  res.json({ message: "hey brother" });
+});
 
 server.listen(port, () => {
   console.log(`Server is Listening at Port ${port}`);
