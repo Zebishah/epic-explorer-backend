@@ -1,7 +1,9 @@
 import express, { json } from "express";
+
 import { Server } from "socket.io";
 import { createServer } from "http";
 import AdminRoutes from "./Routes/Admin-Routes.js";
+import bodyParser from "body-parser";
 import CategoryRoutes from "./Routes/Category-Routes.js";
 import TourRoutes from "./Routes/Tour-Routes.js";
 import ServiceItrenaryRoutes from "./Routes/TourServices-Routes.js";
@@ -30,7 +32,6 @@ const io = new Server(server, {
     credentials: true, // Allow cookies to be sent with the request
   },
 });
-
 io.on("connection", (socket) => {
   console.log("New client connected");
 
@@ -47,6 +48,9 @@ app.use(
     credentials: true, // Allow cookies to be sent with the request
   })
 );
+app.get((req, res) => {
+  res.json({ message: "hey brother" });
+});
 app.use(json());
 const port = process.env.PORT || 5000;
 mongoose
@@ -61,9 +65,7 @@ mongoose
     console.error("DB connection error:", err);
   });
 let host = process.env.REACT_APP_API_HOST;
-app.get("/", (req, res) => {
-  res.json({ message: "hey bro" });
-});
+
 app.use("/Admin", AdminRoutes);
 app.use("/Review", ReviewsRoutes);
 app.use("/Notification", NotificationRoutes);
@@ -79,5 +81,8 @@ app.use("/Category", CategoryRoutes);
 app.use("/ToServicesIt", TourServiceRoutes);
 app.use("/HoServicesIt", HotelServicesRoutes);
 app.use("/TrServicesIt", TransportServicesRoutes);
+server.listen(port, () => {
+  console.log("Server is Listening at Port " + port);
+});
 
 export default app;

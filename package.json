@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Epic explorer",
   "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
+ 
   "type": "module",
   "scripts": {
     "start": "nodemon --experimental-modules -resolution=node index.js",
