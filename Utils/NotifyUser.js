@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import io from "../api/index.js";
+import io from "../index.js";
 
 const notifyUsers = (data) => {
   io.emit("notification", data, (err) => {

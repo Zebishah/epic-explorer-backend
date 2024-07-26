@@ -11,7 +11,7 @@ import notifyUsers from "../Utils/NotifyUser.js";
 import { createServer } from "http";
 
 import { Server } from "socket.io";
-import io from "../api/index.js";
+import io from "../index.js";
 import BookTour from "../Models/BookTour.js";
 import mongoose from "mongoose";
 import BookingTransport from "../Models/BookingTransport.js";
