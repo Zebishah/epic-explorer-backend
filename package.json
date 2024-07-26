@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Epic explorer",
   "main": "index.js",
- 
+  "engines": {
+    "node": "18.x"
+  },
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon --experimental-modules -resolution=node index.js",
     "build": "node index.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
