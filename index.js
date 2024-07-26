@@ -44,7 +44,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     credentials: true,
   })
 );
@@ -79,9 +79,7 @@ app.use("/ToServicesIt", TourServiceRoutes);
 app.use("/HoServicesIt", HotelServicesRoutes);
 app.use("/TrServicesIt", TransportServicesRoutes);
 
-app.get("/", (req, res) => {
-  res.json({ message: "hey brother" });
-});
+c;
 
 server.listen(port, () => {
   console.log(`Server is Listening at Port ${port}`);
