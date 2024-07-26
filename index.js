@@ -62,21 +62,21 @@ mongoose
     console.error("DB connection error:", err);
   });
 
-app.use("api/Admin", AdminRoutes);
-app.use("api/Review", ReviewsRoutes);
-app.use("api/Notification", NotificationRoutes);
-app.use("api/User", UserRoutes);
-app.use("api/UserFavrt", UserFavoriteRoutes);
-app.use("api/Tour", TourRoutes);
-app.use("api/Blog", BlogRoutes);
-app.use("api/Bill", BillRoutes);
-app.use("api/Hotel", HotelRoutes);
-app.use("api/Room", RoomRoutes);
-app.use("api/Transport", TransportRoutes);
-app.use("api/Category", CategoryRoutes);
-app.use("api/ToServicesIt", TourServiceRoutes);
-app.use("api/HoServicesIt", HotelServicesRoutes);
-app.use("api/TrServicesIt", TransportServicesRoutes);
+app.use("Admin", AdminRoutes);
+app.use("Review", ReviewsRoutes);
+app.use("Notification", NotificationRoutes);
+app.use("User", UserRoutes);
+app.use("UserFavrt", UserFavoriteRoutes);
+app.use("Tour", TourRoutes);
+app.use("Blog", BlogRoutes);
+app.use("Bill", BillRoutes);
+app.use("Hotel", HotelRoutes);
+app.use("Room", RoomRoutes);
+app.use("Transport", TransportRoutes);
+app.use("Category", CategoryRoutes);
+app.use("ToServicesIt", TourServiceRoutes);
+app.use("HoServicesIt", HotelServicesRoutes);
+app.use("TrServicesIt", TransportServicesRoutes);
 app.get("/", (req, res) => {
   res.json({ message: "hey brother" });
 });
