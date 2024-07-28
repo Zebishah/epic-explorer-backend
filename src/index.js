@@ -27,7 +27,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://epic-explorer-frontend-f8n1.vercel.app",
     credentials: true,
   },
 });
@@ -43,7 +43,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
-    origin: "*",
+    origin: "https://epic-explorer-frontend-f8n1.vercel.app",
     credentials: true,
   })
 );
